@@ -1,0 +1,38 @@
+#container-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.countdown {
+    padding: 5px;
+    padding-right: 10px;
+    display: block;
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+
+#question-container {
+    
+    
+}
+
+#quiz-container {
+    border: 5px dashed cadetblue;
+    margin: 5px 5px;
+    width: 800px;
+    height: 400px;
+
+}
+
+#quiz-question {
+    padding: 5px;
+   
+}
+
+#options {
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+}
