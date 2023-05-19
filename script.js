@@ -1,9 +1,8 @@
 // declaring elements involved in the quiz build
-const submitButton = document.getElementsByClassName("quizButton");
 
 //timer isnt working :(
 //this is the variable declared for countdown in html
-var timerEl = document.getElementsByClassName("countdown");
+var timerEl = document.getElementById('countdown');
 //this is the function for the counter
 function counter() {
     //total amount of time per quiz game
@@ -11,7 +10,11 @@ function counter() {
     var timerInt = setInterval(function () {
         //decrements the timer
         timer--;
-        timerEl.textContent = `${timer} seconds left!`;
+        if(timer > 1) {
+            timerEl.textContent = timer + " seconds left!"
+        } else if (timer === 1) {
+            timerEl.textContent = timer + " second left!"
+        }
         //makes setInterval cancel to keep from going into negative numbers
         if (timer === 0) {
             clearInterval(timerInt);
@@ -19,6 +22,8 @@ function counter() {
         }
     }, 1000);
 }
+
+counter();
 
 //the functionality of the quiz will go in this function
 function quiz() {
@@ -31,11 +36,10 @@ function quiz() {
 function resultsPlease() { }
 
 // this is the event listener for the button
-submitButton.addEventListener("click", resultsPlease);
+
 
 
 // working on object array for questions and options need to add all options will work with that down here until their done then figure out how to add it above
-
 
 var questions =
     [{ question: "What language is a mark up language?",
@@ -85,3 +89,58 @@ var questions =
         correct: "two"
      }
     ]
+
+//question variables
+//question 1 
+var quest1 = document.getElementById('quiz-question')
+
+quest1.textContent = questions[0].question
+
+//first choice
+var op1 = document.getElementById('op1')
+
+op1.textContent = questions[0].options.one
+
+//second choice
+//third choice
+//fourth choice
+
+//question 2
+var quest2 = document.getElementById('quiz-question')
+
+quest2.textContent = questions[1].question
+
+//first choice
+//second choice
+//third choice
+//fourth choice
+
+//question 3
+var quest3 = document.getElementById('quiz-question')
+
+quest3.textContent = questions[2].question
+
+//first choice
+//second choice
+//third choice
+//fourth choice
+
+//question 4
+var quest4 = document.getElementById('quiz-question')
+
+quest4.textContent = questions[3].question
+
+//first choice
+//second choice
+//third choice
+//fourth choice
+
+//question 5
+var quest5 = document.getElementById('quiz-question')
+
+quest5.textContent = questions[4].question
+
+//first choice
+//second choice
+//third choice
+//fourth choice
