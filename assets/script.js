@@ -18,6 +18,7 @@ function counter() {
         //makes setInterval cancel to keep from going into negative numbers
         if (timer === 0) {
             clearInterval(timerInt);
+            alert("You have run out of time!")
             // i want to add functionality to make the timer running out end the quiz
         }
     }, 1000);
