@@ -90,57 +90,69 @@ var questions =
      }
     ]
 
-//question variables
-//question 1 
+//question and answers variables
 var quest1 = document.getElementById('quiz-question')
-
-quest1.textContent = questions[0].question
-
-//first choice
-var op1 = document.getElementById('op1')
-
-op1.textContent = questions[0].options.one
-
-//second choice
-//third choice
-//fourth choice
-
-//question 2
 var quest2 = document.getElementById('quiz-question')
-
-quest2.textContent = questions[1].question
-
-//first choice
-//second choice
-//third choice
-//fourth choice
-
-//question 3
 var quest3 = document.getElementById('quiz-question')
-
-quest3.textContent = questions[2].question
-
-//first choice
-//second choice
-//third choice
-//fourth choice
-
-//question 4
 var quest4 = document.getElementById('quiz-question')
-
-quest4.textContent = questions[3].question
-
-//first choice
-//second choice
-//third choice
-//fourth choice
-
-//question 5
 var quest5 = document.getElementById('quiz-question')
 
-quest5.textContent = questions[4].question
+var op1 = document.getElementById('op1')
+var op2 = document.getElementById('op2')
+var op3 = document.getElementById('op3')
+var op4 = document.getElementById('op4')
 
-//first choice
-//second choice
-//third choice
-//fourth choice
+//question 1
+quest1.textContent = questions[0].question
+   //first choice
+    op1.textContent = questions[0].options.one
+   //second choice
+    op2.textContent = questions[0].options.two
+   //third choice
+    op3.textContent = questions[0].options.three
+   //fourth choice
+    op4.textContent = questions[0].options.four
+
+//question 2
+quest2.textContent = questions[1].question
+   //first choice
+    op1.textContent = questions[1].options.one
+   //second choice
+    op2.textContent = questions[1].options.two
+   //third choice
+    op3.textContent = questions[1].options.three
+   //fourth choice
+    op4.textContent = questions[1].options.four
+
+//question 3
+quest3.textContent = questions[2].question
+   //first choice
+    op1.textContent = questions[2].options.one
+   //second choice
+   op2.textContent = questions[2].options.two
+   //third choice
+   op3.textContent = questions[2].options.three
+   //fourth choice
+   op4.textContent = questions[2].options.four
+
+//question 4
+quest4.textContent = questions[3].question
+   //first choice
+    op1.textContent = questions[3].options.one
+   //second choice
+    op2.textContent = questions[3].options.two
+   //third choice
+    op3.textContent = questions[3].options.three
+   //fourth choice
+    op4.textContent = questions[3].options.four
+
+//question 5
+quest5.textContent = questions[4].question
+   //first choice
+    op1.textContent = questions[4].options.one
+   //second choice
+    op2.textContent = questions[4].options.two
+   //third choice
+    op3.textContent = questions[4].options.three
+   //fourth choice
+    op4.textContent = questions[4].options.four
