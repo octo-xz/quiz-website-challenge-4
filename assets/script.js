@@ -3,45 +3,52 @@ var gameContainer = document.getElementById('theBigContainer')
 
 var startBtn = document.getElementById('gameStartBtn')
 
+var countdown = document.getElementById('countdown');
+
 var quizStart = false
 
+var timer = 30 
 
+//starts the quiz
 startBtn.addEventListener('click', function(){
     gameContainer.style.display = "block";
     startBtn.style.display = 'none';
+    quizStart = true;
+
+    renderTimer();
+
+    var interval = setInterval(function(){
+        if(!quizStart) {
+            return;
+        }
+        timer --;
+        renderTimer();
+        if (timer <= 0) {
+            clearInterval(interval);
+
+            gameContainer.textContent = "You ran out of time!"
+        }
+    }, 1000); 
     
 
+
 });
+
+function renderTimer() {
+    countdown.textContent = timer + " seconds left!"
+    if( timer == 1) {
+        countdown.textContent = timer + " second left!"
+    }
+    
+}
+
 
 
 
 
 //timer is working or at least the first part, still need to hook it up to the quiz 
 //this is the variable declared for countdown in html
-var timerEl = document.getElementById('countdown');
 //this is the function for the counter
-function counter() {
-    //total amount of time per quiz game
-    var timer = 31;
-    var timerInt = setInterval(function () {
-        //decrements the timer
-        timer--;
-        if(timer > 1) {
-            timerEl.textContent = timer + " seconds left!"
-        } else if (timer === 1) {
-            timerEl.textContent = timer + " second left!"
-        }
-        //makes setInterval cancel to keep from going into negative numbers
-        if (timer === 0) {
-            timerEl.textContent = timer + " seconds left!"
-            clearInterval(timerInt);
-            alert("You have run out of time!")
-            // i want to add functionality to make the timer running out end the quiz
-        }
-    }, 1000);
-}
-
-counter();
 
 
 // working on object array for questions and options need to add all options will work with that down here until their done then figure out how to add it above
