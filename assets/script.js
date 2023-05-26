@@ -52,18 +52,6 @@ function renderTimer() {
 
 
 
-function makeGuess1() {
-    if(op1 || op2 || op3) {
-        //are clicked on
-        //return incorrect answer
-    } else if (op4) {
-        //is clicked on
-        //return the correct answer
-    }
-    //move to next question to be displayed
-}
-
-
 var questions =
     [{ question: "What language is a mark up language?",
         options: {
