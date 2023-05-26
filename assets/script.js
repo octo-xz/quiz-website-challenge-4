@@ -121,11 +121,18 @@ var op3 = document.getElementById('op3')
 var op4 = document.getElementById('op4')
 
 op1.addEventListener('click', checkAnswer)
+op2.addEventListener('click', checkAnswer)
+op3.addEventListener('click', checkAnswer)
+op4.addEventListener('click', checkAnswer)
 
 function checkAnswer(){
+    
     //if selected correct answer +1
     //else if selected wrong answer -1
     //move up one in the array to display next question
+    //index+1 increase index in array by one every time question is asked
+    //help im cry
+    
 }
 
 
@@ -135,18 +142,19 @@ function quiz() {
     //first i want to set what questions the quiz will cycle through
     var currentQuestion = questions[index]
     //question 1
-quest1.textContent = currentQuestion.question
-//first choice
- op1.textContent = currentQuestion.options.one
-//second choice
- op2.textContent = currentQuestion.options.two
-//third choice
- op3.textContent = currentQuestion.options.three
-//fourth choice
- op4.textContent = currentQuestion.options.four
+    quest1.textContent = currentQuestion.question
+    //first choice
+    op1.textContent = currentQuestion.options.one
+    //second choice
+    op2.textContent = currentQuestion.options.two
+    //third choice
+    op3.textContent = currentQuestion.options.three
+    //fourth choice
+    op4.textContent = currentQuestion.options.four
     
 }
 
+quiz();
 
 //options selection
 options.addEventListener('click', function(){
@@ -154,4 +162,5 @@ options.addEventListener('click', function(){
             //clicked
         }
 })
+//unsure if this is redundant now
 
