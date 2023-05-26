@@ -1,47 +1,58 @@
-// declaring elements involved in the quiz build
+//sorting out my button first
+var gameContainer = document.getElementById('theBigContainer')
 
-//timer isnt working :(
-//this is the variable declared for countdown in html
-var timerEl = document.getElementById('countdown');
-//this is the function for the counter
-function counter() {
-    //total amount of time per quiz game
-    var timer = 31;
-    var timerInt = setInterval(function () {
-        //decrements the timer
-        timer--;
-        if(timer > 1) {
-            timerEl.textContent = timer + " seconds left!"
-        } else if (timer === 1) {
-            timerEl.textContent = timer + " second left!"
+var startBtn = document.getElementById('gameStartBtn')
+
+var countdown = document.getElementById('countdown');
+
+var quizStart = false
+
+var timer = 30 
+
+//starts the quiz
+startBtn.addEventListener('click', function(){
+    gameContainer.style.display = "block";
+    startBtn.style.display = 'none';
+    quizStart = true;
+
+    renderTimer();
+
+    var interval = setInterval(function(){
+        if(!quizStart) {
+            return;
         }
-        //makes setInterval cancel to keep from going into negative numbers
-        if (timer === 0) {
-            timerEl.textContent = timer + " seconds left!"
-            clearInterval(timerInt);
-            alert("You have run out of time!")
-            // i want to add functionality to make the timer running out end the quiz
+        timer --;
+        renderTimer();
+        if (timer <= 0) {
+            clearInterval(interval);
+
+            gameContainer.textContent = "You ran out of time!"
         }
-    }, 1000);
+    }, 1000); 
+    
+
+
+});
+
+function renderTimer() {
+    countdown.textContent = timer + " seconds left!"
+    if( timer == 1) {
+        countdown.textContent = timer + " second left!"
+    }
+    
 }
 
-counter();
-
-//the functionality of the quiz will go in this function
-function quiz() {
-    //first i want to set what questions the quiz will cycle through
-
+function makeGuess1() {
+    if(op1 || op2 || op3) {
+        //are clicked on
+        //return incorrect answer
+    } else if (op4) {
+        //is clicked on
+        //return the correct answer
+    }
+    //move to next question to be displayed
 }
 
-
-// shows the results after the quiz has been completed
-function resultsPlease() { }
-
-// this is the event listener for the button
-
-
-
-// working on object array for questions and options need to add all options will work with that down here until their done then figure out how to add it above
 
 var questions =
     [{ question: "What language is a mark up language?",
@@ -84,7 +95,7 @@ var questions =
     { question: "What phrase is often used as a first exercise in JavaScript?",
         options: {
             one: "1. Gotta catch 'em all!",
-            two: "2. Hello World",
+            two: "2. Hello World!",
             three: "3. What is up my dudes?",
             four: "4. I am sleepy"
         },
@@ -115,46 +126,14 @@ quest1.textContent = questions[0].question
    //fourth choice
     op4.textContent = questions[0].options.four
 
-//question 2
-quest2.textContent = questions[1].question
-   //first choice
-    op1.textContent = questions[1].options.one
-   //second choice
-    op2.textContent = questions[1].options.two
-   //third choice
-    op3.textContent = questions[1].options.three
-   //fourth choice
-    op4.textContent = questions[1].options.four
 
-//question 3
-quest3.textContent = questions[2].question
-   //first choice
-    op1.textContent = questions[2].options.one
-   //second choice
-   op2.textContent = questions[2].options.two
-   //third choice
-   op3.textContent = questions[2].options.three
-   //fourth choice
-   op4.textContent = questions[2].options.four
 
-//question 4
-quest4.textContent = questions[3].question
-   //first choice
-    op1.textContent = questions[3].options.one
-   //second choice
-    op2.textContent = questions[3].options.two
-   //third choice
-    op3.textContent = questions[3].options.three
-   //fourth choice
-    op4.textContent = questions[3].options.four
 
-//question 5
-quest5.textContent = questions[4].question
-   //first choice
-    op1.textContent = questions[4].options.one
-   //second choice
-    op2.textContent = questions[4].options.two
-   //third choice
-    op3.textContent = questions[4].options.three
-   //fourth choice
-    op4.textContent = questions[4].options.four
+    //the functionality of the quiz will go in this function
+function quiz() {
+    //first i want to set what questions the quiz will cycle through
+
+}
+
+// shows the results after the quiz has been completed
+function resultsPlease() { }
