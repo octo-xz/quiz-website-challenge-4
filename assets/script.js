@@ -1,15 +1,22 @@
 //sorting out my button first
-var gameContainer = document.getElementById('theBigContainer')
+var gameContainer = document.getElementById('theBigContainer');
 
-var startBtn = document.getElementById('gameStartBtn')
+var startBtn = document.getElementById('gameStartBtn');
 
 var countdown = document.getElementById('countdown');
 
-var resultsBtn = document.getElementById('resultsBtn')
+var resultsBtn = document.getElementById('resultsBtn');
 
-var quizStart = false
+var options = document.getElementById('options')
 
-var timer = 30 
+var quizStart = false;
+
+var index = 0;
+
+var timer = 30;
+
+var interval;
+
 
 //starts the quiz
 startBtn.addEventListener('click', function(){
@@ -20,7 +27,7 @@ startBtn.addEventListener('click', function(){
 
     renderTimer();
 
-    var interval = setInterval(function(){
+    interval = setInterval(function(){
         if(!quizStart) {
             return;
         }
@@ -60,7 +67,7 @@ var questions =
             three: "3. JavaScript",
             four: "4. HTML"
         },
-        correct: "four"
+        correct: "4. HTML"
      },
 
     { question: "What is a boolean?",
@@ -70,7 +77,7 @@ var questions =
             three: "3. A framework for CSS",
             four: "4. A type of true false variable"
         },
-        correct: "four"
+        correct: "4. A type of true false variable"
     },
     { question: "What is the not operator?",
         options: {
@@ -79,7 +86,7 @@ var questions =
             three: "3. !",
             four: "4. $"
         },
-        correct: "three"
+        correct: "3. !"
     },
     { question: "What does the DOM stand for?",
         options: {
@@ -88,7 +95,7 @@ var questions =
             three: "3. Document Object Model",
             four: "4. Download On Motorcycle"
         },
-        correct: "three"
+        correct: "3. Document Object Model"
     },
     { question: "What phrase is often used as a first exercise in JavaScript?",
         options: {
@@ -97,7 +104,7 @@ var questions =
             three: "3. What is up my dudes?",
             four: "4. I am sleepy"
         },
-        correct: "two"
+        correct: "2. Hello World!"
      }
     ]
 
@@ -113,25 +120,38 @@ var op2 = document.getElementById('op2')
 var op3 = document.getElementById('op3')
 var op4 = document.getElementById('op4')
 
-//question 1
-quest1.textContent = questions[0].question
-   //first choice
-    op1.textContent = questions[0].options.one
-   //second choice
-    op2.textContent = questions[0].options.two
-   //third choice
-    op3.textContent = questions[0].options.three
-   //fourth choice
-    op4.textContent = questions[0].options.four
+op1.addEventListener('click', checkAnswer)
 
+function checkAnswer(){
+    //if selected correct answer +1
+    //else if selected wrong answer -1
+    //move up one in the array to display next question
+}
 
 
 
     //the functionality of the quiz will go in this function
 function quiz() {
     //first i want to set what questions the quiz will cycle through
-
+    var currentQuestion = questions[index]
+    //question 1
+quest1.textContent = currentQuestion.question
+//first choice
+ op1.textContent = currentQuestion.options.one
+//second choice
+ op2.textContent = currentQuestion.options.two
+//third choice
+ op3.textContent = currentQuestion.options.three
+//fourth choice
+ op4.textContent = currentQuestion.options.four
+    
 }
 
-// shows the results after the quiz has been completed
-function resultsPlease() { }
+
+//options selection
+options.addEventListener('click', function(){
+        if(op1 || op2 || op3) {
+            //clicked
+        }
+})
+
