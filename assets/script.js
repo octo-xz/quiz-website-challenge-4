@@ -5,6 +5,8 @@ var startBtn = document.getElementById('gameStartBtn')
 
 var countdown = document.getElementById('countdown');
 
+var resultsBtn = document.getElementById('resultsBtn')
+
 var quizStart = false
 
 var timer = 30 
@@ -13,6 +15,7 @@ var timer = 30
 startBtn.addEventListener('click', function(){
     gameContainer.style.display = "block";
     startBtn.style.display = 'none';
+    resultsBtn.style.display = 'none';
     quizStart = true;
 
     renderTimer();
@@ -27,12 +30,16 @@ startBtn.addEventListener('click', function(){
             clearInterval(interval);
 
             gameContainer.textContent = "You ran out of time!"
+            resultsBtn.style.display = 'block'
         }
     }, 1000); 
     
 
 
 });
+
+
+
 
 function renderTimer() {
     countdown.textContent = timer + " seconds left!"
@@ -41,6 +48,9 @@ function renderTimer() {
     }
     
 }
+
+
+
 
 function makeGuess1() {
     if(op1 || op2 || op3) {
