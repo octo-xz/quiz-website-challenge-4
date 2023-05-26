@@ -1,6 +1,6 @@
 // declaring elements involved in the quiz build
 
-//timer isnt working :(
+//timer is working or at least the first part, still need to hook it up to the quiz 
 //this is the variable declared for countdown in html
 var timerEl = document.getElementById('countdown');
 //this is the function for the counter
@@ -26,19 +26,6 @@ function counter() {
 }
 
 counter();
-
-//the functionality of the quiz will go in this function
-function quiz() {
-    //first i want to set what questions the quiz will cycle through
-
-}
-
-
-// shows the results after the quiz has been completed
-function resultsPlease() { }
-
-// this is the event listener for the button
-
 
 
 // working on object array for questions and options need to add all options will work with that down here until their done then figure out how to add it above
@@ -84,7 +71,7 @@ var questions =
     { question: "What phrase is often used as a first exercise in JavaScript?",
         options: {
             one: "1. Gotta catch 'em all!",
-            two: "2. Hello World",
+            two: "2. Hello World!",
             three: "3. What is up my dudes?",
             four: "4. I am sleepy"
         },
@@ -158,3 +145,13 @@ quest5.textContent = questions[4].question
     op3.textContent = questions[4].options.three
    //fourth choice
     op4.textContent = questions[4].options.four
+
+
+    //the functionality of the quiz will go in this function
+function quiz() {
+    //first i want to set what questions the quiz will cycle through
+
+}
+
+// shows the results after the quiz has been completed
+function resultsPlease() { }
