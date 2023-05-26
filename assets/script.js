@@ -1,4 +1,17 @@
-// declaring elements involved in the quiz build
+//sorting out my button first
+var gameContainer = document.getElementById('theBigContainer')
+
+var startBtn = document.getElementById('gameStartBtn')
+
+startBtn.addEventListener('click', function(){
+    gameContainer.style.display = "block";
+    startBtn.style.display = 'none';
+    
+
+});
+
+
+
 
 //timer is working or at least the first part, still need to hook it up to the quiz 
 //this is the variable declared for countdown in html
@@ -102,49 +115,7 @@ quest1.textContent = questions[0].question
    //fourth choice
     op4.textContent = questions[0].options.four
 
-//question 2
-quest2.textContent = questions[1].question
-   //first choice
-    op1.textContent = questions[1].options.one
-   //second choice
-    op2.textContent = questions[1].options.two
-   //third choice
-    op3.textContent = questions[1].options.three
-   //fourth choice
-    op4.textContent = questions[1].options.four
 
-//question 3
-quest3.textContent = questions[2].question
-   //first choice
-    op1.textContent = questions[2].options.one
-   //second choice
-   op2.textContent = questions[2].options.two
-   //third choice
-   op3.textContent = questions[2].options.three
-   //fourth choice
-   op4.textContent = questions[2].options.four
-
-//question 4
-quest4.textContent = questions[3].question
-   //first choice
-    op1.textContent = questions[3].options.one
-   //second choice
-    op2.textContent = questions[3].options.two
-   //third choice
-    op3.textContent = questions[3].options.three
-   //fourth choice
-    op4.textContent = questions[3].options.four
-
-//question 5
-quest5.textContent = questions[4].question
-   //first choice
-    op1.textContent = questions[4].options.one
-   //second choice
-    op2.textContent = questions[4].options.two
-   //third choice
-    op3.textContent = questions[4].options.three
-   //fourth choice
-    op4.textContent = questions[4].options.four
 
 
     //the functionality of the quiz will go in this function
