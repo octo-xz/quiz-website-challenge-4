@@ -19,7 +19,7 @@ var interval;
 
 
 //starts the quiz
-startBtn.addEventListener('click', function(){
+startBtn.addEventListener('click', function () {
     gameContainer.style.display = "block";
     startBtn.style.display = 'none';
     resultsBtn.style.display = 'none';
@@ -27,11 +27,11 @@ startBtn.addEventListener('click', function(){
 
     renderTimer();
 
-    interval = setInterval(function(){
-        if(!quizStart) {
+    interval = setInterval(function () {
+        if (!quizStart) {
             return;
         }
-        timer --;
+        timer--;
         renderTimer();
         if (timer <= 0) {
             clearInterval(interval);
@@ -39,8 +39,8 @@ startBtn.addEventListener('click', function(){
             gameContainer.textContent = "You ran out of time!"
             resultsBtn.style.display = 'block'
         }
-    }, 1000); 
-    
+    }, 1000);
+
 
 
 });
@@ -50,17 +50,18 @@ startBtn.addEventListener('click', function(){
 
 function renderTimer() {
     countdown.textContent = timer + " seconds left!"
-    if( timer == 1) {
+    if (timer == 1) {
         countdown.textContent = timer + " second left!"
     }
-    
+
 }
 
 
 
 
 var questions =
-    [{ question: "What language is a mark up language?",
+    [{
+        question: "What language is a mark up language?",
         options: {
             one: "1. CSS",
             two: "2. Python",
@@ -68,10 +69,11 @@ var questions =
             four: "4. HTML"
         },
         correct: "4. HTML"
-     },
+    },
 
-    { question: "What is a boolean?",
-        options:{
+    {
+        question: "What is a boolean?",
+        options: {
             one: "1. A programming language",
             two: "2. A way of listening for user interaction",
             three: "3. A framework for CSS",
@@ -79,7 +81,8 @@ var questions =
         },
         correct: "4. A type of true false variable"
     },
-    { question: "What is the not operator?",
+    {
+        question: "What is the not operator?",
         options: {
             one: "1. &&",
             two: "2. ||",
@@ -88,7 +91,8 @@ var questions =
         },
         correct: "3. !"
     },
-    { question: "What does the DOM stand for?",
+    {
+        question: "What does the DOM stand for?",
         options: {
             one: "1. Dynamic Object Model",
             two: "2. Doran's Overview Manager",
@@ -97,7 +101,8 @@ var questions =
         },
         correct: "3. Document Object Model"
     },
-    { question: "What phrase is often used as a first exercise in JavaScript?",
+    {
+        question: "What phrase is often used as a first exercise in JavaScript?",
         options: {
             one: "1. Gotta catch 'em all!",
             two: "2. Hello World!",
@@ -105,7 +110,7 @@ var questions =
             four: "4. I am sleepy"
         },
         correct: "2. Hello World!"
-     }
+    }
     ]
 
 //question and answers variables
@@ -125,19 +130,19 @@ op2.addEventListener('click', checkAnswer)
 op3.addEventListener('click', checkAnswer)
 op4.addEventListener('click', checkAnswer)
 
-function checkAnswer(){
-    
+function checkAnswer() {
+
     //if selected correct answer +1
     //else if selected wrong answer -1
     //move up one in the array to display next question
     //index+1 increase index in array by one every time question is asked
     //help im cry
-    
+
 }
 
 
 
-    //the functionality of the quiz will go in this function
+//the functionality of the quiz will go in this function
 function quiz() {
     //first i want to set what questions the quiz will cycle through
     var currentQuestion = questions[index]
@@ -151,16 +156,16 @@ function quiz() {
     op3.textContent = currentQuestion.options.three
     //fourth choice
     op4.textContent = currentQuestion.options.four
-    
+
 }
 
 quiz();
 
 //options selection
-options.addEventListener('click', function(){
-        if(op1 || op2 || op3) {
-            //clicked
-        }
+options.addEventListener('click', function () {
+    if (op1 || op2 || op3) {
+        //clicked
+    }
 })
 //unsure if this is redundant now
 
