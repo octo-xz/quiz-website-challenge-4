@@ -42,16 +42,17 @@ function renderTimer() {
     
 }
 
+function makeGuess1() {
+    if(op1 || op2 || op3) {
+        //are clicked on
+        //return incorrect answer
+    } else if (op4) {
+        //is clicked on
+        //return the correct answer
+    }
+    //move to next question to be displayed
+}
 
-
-
-
-//timer is working or at least the first part, still need to hook it up to the quiz 
-//this is the variable declared for countdown in html
-//this is the function for the counter
-
-
-// working on object array for questions and options need to add all options will work with that down here until their done then figure out how to add it above
 
 var questions =
     [{ question: "What language is a mark up language?",
