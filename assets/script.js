@@ -3,6 +3,9 @@ var gameContainer = document.getElementById('theBigContainer')
 
 var startBtn = document.getElementById('gameStartBtn')
 
+var quizStart = false
+
+
 startBtn.addEventListener('click', function(){
     gameContainer.style.display = "block";
     startBtn.style.display = 'none';
