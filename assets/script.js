@@ -19,6 +19,7 @@ var interval;
 
 
 //starts the quiz
+//disappears buttons for questions to take place 
 startBtn.addEventListener('click', function () {
     gameContainer.style.display = "block";
     startBtn.style.display = 'none';
@@ -46,8 +47,6 @@ startBtn.addEventListener('click', function () {
 });
 
 
-
-
 function renderTimer() {
     countdown.textContent = timer + " seconds left!"
     if (timer == 1) {
@@ -55,7 +54,6 @@ function renderTimer() {
     }
 
 }
-
 
 
 
@@ -137,15 +135,34 @@ function checkAnswer() {
     //move up one in the array to display next question
     //index+1 increase index in array by one every time question is asked
     //help im cry
+    //define variable currentAnswer as global?
+    //currentAnswer = questions[index].correct
+    if (currentQuestion == questions[0]) && (currentAnswer == '4. HTML') {
+        //give +1 pt to score 
+        //repeat this format to go through all questions and correct answers in the array
+    }
 
+    if(currentQuestion == questions[0]) && (currentAnswer !== '4. HTML') {
+        //-1 point from score
+        //repeat format for all questions and correct answers in array
+    }
+
+    //rotate to next question and options somehow
+    //use shift? will the elements return to the array when the page refreshes?
+    //use a forEach method???? cries
+    //questions.forEach(nextQuestion)
+    //funciton nextQuestion(){
+        //increase place in array by 1
+   // }
+    
 }
 
 
 
 //the functionality of the quiz will go in this function
-function quiz() {
+function quizDisplay() {
     //first i want to set what questions the quiz will cycle through
-    var currentQuestion = questions[index]
+    var currentQuestion = questions[index] //making this a global variable?
     //question 1
     quest1.textContent = currentQuestion.question
     //first choice
@@ -159,7 +176,7 @@ function quiz() {
 
 }
 
-quiz();
+quizDisplay();
 
 //options selection
 options.addEventListener('click', function () {
