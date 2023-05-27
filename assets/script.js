@@ -136,27 +136,50 @@ function checkAnswer() {
     //index+1 increase index in array by one every time question is asked
     //help im cry
     //define variable currentAnswer as global?
-    //currentAnswer = questions[index].correct
-    if (currentQuestion == questions[0]) && (currentAnswer == '4. HTML') {
+
+    var selectedAnswer = "cries real tears"//whatever choice is clicked on
+
+    var currentAnswer = questions[index].correct
+
+    var currentQuestion = questions[index];
+
+    if (currentQuestion == questions[0] && selectedAnswer == currentAnswer) {
+        console.log("correct answer")
         //give +1 pt to score 
         //repeat this format to go through all questions and correct answers in the array
-    } else if (currentQuestion == questions[1]) && (currentAnswer == '4. A type of true false variable') {
+    } else if (currentQuestion == questions[1] && currentAnswer == '4. A type of true false variable') {
         //give +1 pt to score 
         //repeat this format to go through all questions and correct answers in the array
-    } else if (currentQuestion == questions[2]) && (currentAnswer == '3. !') {
+    } else if (currentQuestion == questions[2] && currentAnswer == '3. !') {
         //give +1 pt to score 
         //repeat this format to go through all questions and correct answers in the array
-    } else if (currentQuestion == questions[3]) && (currentAnswer == '3. Document Object Model') {
+    } else if (currentQuestion == questions[3] && currentAnswer == '3. Document Object Model') {
         //give +1 pt to score 
         //repeat this format to go through all questions and correct answers in the array
-    } else if (currentQuestion == questions[4]) && (currentAnswer == '2. Hello World!') {
+    } else if (currentQuestion == questions[4] && currentAnswer == '2. Hello World!') {
         //give +1 pt to score 
         //repeat this format to go through all questions and correct answers in the array
+    } else {
+        console.log('i think something has gone wrong')
     }
 
-    if(currentQuestion == questions[0]) && (currentAnswer !== '4. HTML') {
+    if(currentQuestion == questions[0] && currentAnswer !== '4. HTML') {
+        console.log('incorrect answer')
         //-1 point from score
-        //repeat format for all questions and correct answers in array
+    } else if (currentQuestion == questions[1] && currentAnswer !== '4. A type of true false variable') {
+         //-1 point from score
+        //repeat this format to go through all questions and correct answers in the array
+    } else if (currentQuestion == questions[2] && currentAnswer !== '3. !') {
+         //-1 point from score
+        //repeat this format to go through all questions and correct answers in the array
+    } else if (currentQuestion == questions[3] && currentAnswer !== '3. Document Object Model') {
+         //-1 point from score
+        //repeat this format to go through all questions and correct answers in the array
+    } else if (currentQuestion == questions[4] && currentAnswer !== '2. Hello World!') {
+         //-1 point from score
+        //repeat this format to go through all questions and correct answers in the array
+    } else {
+        console.log('i think something has gone wrong again')
     }
 
     //rotate to next question and options somehow
