@@ -128,7 +128,7 @@ op2.addEventListener('click', checkAnswer)
 op3.addEventListener('click', checkAnswer)
 op4.addEventListener('click', checkAnswer)
 
-function checkAnswer() {
+function checkAnswer(event) {
 
     //if selected correct answer +1
     //else if selected wrong answer -1
@@ -137,50 +137,46 @@ function checkAnswer() {
     //help im cry
     //define variable currentAnswer as global?
 
-    var selectedAnswer = questions[index].options.addEventListener('click') //whatever choice is clicked on
+     //whatever choice is clicked on
     //clicked option questions.options.addEventListener('click')
 
     var currentAnswer = questions[index].correct
 
     var currentQuestion = questions[index];
 
-    if (currentQuestion == questions[0] && selectedAnswer == currentAnswer) {
+    if (currentQuestion == questions[0] && currentAnswer == event.target.textContent) {
         console.log("correct answer")
         //give +1 pt to score 
         //repeat this format to go through all questions and correct answers in the array
-    } else if (currentQuestion == questions[1] && currentAnswer == '4. A type of true false variable') {
+    } else if (currentQuestion == questions[1] && currentAnswer == event.target.textContent) {
         //give +1 pt to score 
         //repeat this format to go through all questions and correct answers in the array
-    } else if (currentQuestion == questions[2] && currentAnswer == '3. !') {
+    } else if (currentQuestion == questions[2] && currentAnswer == event.target.textContent) {
         //give +1 pt to score 
         //repeat this format to go through all questions and correct answers in the array
-    } else if (currentQuestion == questions[3] && currentAnswer == '3. Document Object Model') {
+    } else if (currentQuestion == questions[3] && currentAnswer == event.target.textContent) {
         //give +1 pt to score 
         //repeat this format to go through all questions and correct answers in the array
-    } else if (currentQuestion == questions[4] && currentAnswer == '2. Hello World!') {
+    } else if (currentQuestion == questions[4] && currentAnswer == event.target.textContent) {
         //give +1 pt to score 
         //repeat this format to go through all questions and correct answers in the array
-    } else {
-        console.log('i think something has gone wrong')
     }
 
-    if(currentQuestion == questions[0] && currentAnswer !== '4. HTML') {
+    if(currentQuestion == questions[0] && currentAnswer !== event.target.textContent) {
         console.log('incorrect answer')
         //-1 point from score
-    } else if (currentQuestion == questions[1] && currentAnswer !== '4. A type of true false variable') {
+    } else if (currentQuestion == questions[1] && currentAnswer !== event.target.textContent) {
          //-1 point from score
         //repeat this format to go through all questions and correct answers in the array
-    } else if (currentQuestion == questions[2] && currentAnswer !== '3. !') {
+    } else if (currentQuestion == questions[2] && currentAnswer !== event.target.textContent) {
          //-1 point from score
         //repeat this format to go through all questions and correct answers in the array
-    } else if (currentQuestion == questions[3] && currentAnswer !== '3. Document Object Model') {
+    } else if (currentQuestion == questions[3] && currentAnswer !== event.target.textContent) {
          //-1 point from score
         //repeat this format to go through all questions and correct answers in the array
-    } else if (currentQuestion == questions[4] && currentAnswer !== '2. Hello World!') {
+    } else if (currentQuestion == questions[4] && currentAnswer !== event.target.textContent) {
          //-1 point from score
         //repeat this format to go through all questions and correct answers in the array
-    } else {
-        console.log('i think something has gone wrong again')
     }
 
     //rotate to next question and options somehow
