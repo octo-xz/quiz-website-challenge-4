@@ -27,6 +27,10 @@
     color: #45D994;
 }
 
+#backBtn {
+    display: none;
+}
+
 h1 {
     margin: 30px;
     padding: 15px;

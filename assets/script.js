@@ -7,7 +7,9 @@ var countdown = document.getElementById('countdown');
 
 var resultsBtn = document.getElementById('resultsBtn');
 
-var options = document.getElementById('options')
+var backBtn = document.getElementById('backBtn');
+
+var options = document.getElementById('options');
 
 var quizStart = false;
 
@@ -18,12 +20,15 @@ var timer = 30;
 var interval;
 
 
+
+//gotta have a buttons section :D
 //starts the quiz
 //disappears buttons for questions to take place 
 startBtn.addEventListener('click', function () {
     gameContainer.style.display = "block";
     startBtn.style.display = 'none';
     resultsBtn.style.display = 'none';
+    backBtn.style.display = 'none';
     quizStart = true;
 
     renderTimer();
@@ -45,6 +50,20 @@ startBtn.addEventListener('click', function () {
 
 
 });
+
+resultsBtn.addEventListener('click', function(){
+    quizStart == false;
+    startBtn.style.display = 'none';
+    resultsBtn.style.display = 'none';
+    backBtn.style.display = 'block';
+})
+
+backBtn.addEventListener('click', function(){
+    startBtn.style.display = 'block';
+    resultsBtn.style.display = 'block';
+    backBtn.style.display = 'none';
+})
+
 
 
 function renderTimer() {
@@ -209,12 +228,4 @@ function quizDisplay() {
 }
 
 quizDisplay();
-
-//options selection
-options.addEventListener('click', function () {
-    if (op1 || op2 || op3) {
-        //clicked
-    }
-})
-//unsure if this is redundant now
 
