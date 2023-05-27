@@ -137,7 +137,7 @@ function checkAnswer() {
     //help im cry
     //define variable currentAnswer as global?
 
-    var selectedAnswer = questions.options.addEventListener('click') //whatever choice is clicked on
+    var selectedAnswer = questions[index].options.addEventListener('click') //whatever choice is clicked on
     //clicked option questions.options.addEventListener('click')
 
     var currentAnswer = questions[index].correct
