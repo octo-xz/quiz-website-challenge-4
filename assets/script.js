@@ -42,7 +42,7 @@ startBtn.addEventListener('click', function () {
         if (timer <= 0) {
             clearInterval(interval);
 
-            gameContainer.textContent = "You ran out of time!"
+            
             resultsBtn.style.display = 'block'
         }
     }, 1000);
@@ -130,7 +130,7 @@ var questions =
     }
     ]
 
-//question and answers variables
+//question and answers variables might be redundant now dont u love when u code stuff and then leave and then have code and are like what do u do do i need u
 var quest1 = document.getElementById('quiz-question')
 var quest2 = document.getElementById('quiz-question')
 var quest3 = document.getElementById('quiz-question')

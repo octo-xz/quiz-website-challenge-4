@@ -31,6 +31,10 @@
     display: none;
 }
 
+#scores {
+    display: none;
+}
+
 h1 {
     margin: 30px;
     padding: 15px;
