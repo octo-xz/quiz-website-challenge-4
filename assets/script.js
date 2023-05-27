@@ -1,13 +1,19 @@
 //sorting out my button first
 var gameContainer = document.getElementById('theBigContainer');
 
+var resultsContainer = document.getElementById('resultsContainer');
+
+var enterName = document.getElementById('enterName')
+
 var startBtn = document.getElementById('gameStartBtn');
 
 var countdown = document.getElementById('countdown');
 
 var resultsBtn = document.getElementById('resultsBtn');
 
-var options = document.getElementById('options')
+var backBtn = document.getElementById('backBtn');
+
+var options = document.getElementById('options');
 
 var quizStart = false;
 
@@ -17,13 +23,17 @@ var timer = 30;
 
 var interval;
 
+var points = 0;
 
+
+//gotta have a buttons section :D and theyre pretty buttons hehehe
 //starts the quiz
 //disappears buttons for questions to take place 
 startBtn.addEventListener('click', function () {
     gameContainer.style.display = "block";
     startBtn.style.display = 'none';
     resultsBtn.style.display = 'none';
+    backBtn.style.display = 'none';
     quizStart = true;
 
     renderTimer();
@@ -37,7 +47,7 @@ startBtn.addEventListener('click', function () {
         if (timer <= 0) {
             clearInterval(interval);
 
-            gameContainer.textContent = "You ran out of time!"
+            
             resultsBtn.style.display = 'block'
         }
     }, 1000);
@@ -47,10 +57,29 @@ startBtn.addEventListener('click', function () {
 });
 
 
+
+resultsBtn.addEventListener('click', function(){
+    quizStart == false;
+    startBtn.style.display = 'none';
+    resultsBtn.style.display = 'none';
+    backBtn.style.display = 'block';
+    localStorage.getItem(points)
+})
+
+backBtn.addEventListener('click', function(){
+    startBtn.style.display = 'block';
+    resultsBtn.style.display = 'block';
+    backBtn.style.display = 'none';
+})
+
+
+
 function renderTimer() {
     countdown.textContent = timer + " seconds left!"
     if (timer == 1) {
         countdown.textContent = timer + " second left!"
+    } else if (timer == 0) {
+        gameContainer.style.display = 'none'
     }
 
 }
@@ -111,7 +140,7 @@ var questions =
     }
     ]
 
-//question and answers variables
+//question and answers variables might be redundant now dont u love when u code stuff and then leave and then have code and are like what do u do do i need u
 var quest1 = document.getElementById('quiz-question')
 var quest2 = document.getElementById('quiz-question')
 var quest3 = document.getElementById('quiz-question')
@@ -128,7 +157,7 @@ op2.addEventListener('click', checkAnswer)
 op3.addEventListener('click', checkAnswer)
 op4.addEventListener('click', checkAnswer)
 
-function checkAnswer() {
+function checkAnswer(event) {
 
     //if selected correct answer +1
     //else if selected wrong answer -1
@@ -137,50 +166,76 @@ function checkAnswer() {
     //help im cry
     //define variable currentAnswer as global?
 
-    var selectedAnswer = questions.options.addEventListener('click') //whatever choice is clicked on
+     //whatever choice is clicked on
     //clicked option questions.options.addEventListener('click')
 
     var currentAnswer = questions[index].correct
 
     var currentQuestion = questions[index];
 
-    if (currentQuestion == questions[0] && selectedAnswer == currentAnswer) {
+    var points = 0
+
+    if (currentQuestion == questions[0] && currentAnswer == event.target.textContent) {
+        points += 1;
+        localStorage.setItem("score", points)
         console.log("correct answer")
         //give +1 pt to score 
         //repeat this format to go through all questions and correct answers in the array
-    } else if (currentQuestion == questions[1] && currentAnswer == '4. A type of true false variable') {
+    } else if (currentQuestion == questions[1] && currentAnswer == event.target.textContent) {
+        points += 1;
+        localStorage.setItem("score", points)
+        console.log("correct answer")
         //give +1 pt to score 
         //repeat this format to go through all questions and correct answers in the array
-    } else if (currentQuestion == questions[2] && currentAnswer == '3. !') {
+    } else if (currentQuestion == questions[2] && currentAnswer == event.target.textContent) {
+        points += 1;
+        localStorage.setItem("score", points)
+        console.log("correct answer")
         //give +1 pt to score 
         //repeat this format to go through all questions and correct answers in the array
-    } else if (currentQuestion == questions[3] && currentAnswer == '3. Document Object Model') {
+    } else if (currentQuestion == questions[3] && currentAnswer == event.target.textContent) {
+        points += 1;
+        localStorage.setItem("score", points)
+        console.log("correct answer")
         //give +1 pt to score 
         //repeat this format to go through all questions and correct answers in the array
-    } else if (currentQuestion == questions[4] && currentAnswer == '2. Hello World!') {
+    } else if (currentQuestion == questions[4] && currentAnswer == event.target.textContent) {
+        points += 1;
+        localStorage.setItem("score", points)
+        console.log("correct answer")
         //give +1 pt to score 
         //repeat this format to go through all questions and correct answers in the array
-    } else {
-        console.log('i think something has gone wrong')
     }
 
-    if(currentQuestion == questions[0] && currentAnswer !== '4. HTML') {
+    if(currentQuestion == questions[0] && currentAnswer !== event.target.textContent) {
+        points -= 1;
+        localStorage.setItem("score", points)
         console.log('incorrect answer')
         //-1 point from score
-    } else if (currentQuestion == questions[1] && currentAnswer !== '4. A type of true false variable') {
+    } else if (currentQuestion == questions[1] && currentAnswer !== event.target.textContent) {
+        points -= 1;
+        localStorage.setItem("score", points)
+        console.log('incorrect answer')
          //-1 point from score
         //repeat this format to go through all questions and correct answers in the array
-    } else if (currentQuestion == questions[2] && currentAnswer !== '3. !') {
+    } else if (currentQuestion == questions[2] && currentAnswer !== event.target.textContent) {
+        points -= 1;
+        localStorage.setItem("score", points)
+        console.log('incorrect answer')
          //-1 point from score
         //repeat this format to go through all questions and correct answers in the array
-    } else if (currentQuestion == questions[3] && currentAnswer !== '3. Document Object Model') {
+    } else if (currentQuestion == questions[3] && currentAnswer !== event.target.textContent) {
+        points -= 1;
+        localStorage.setItem("score", points)
+        console.log('incorrect answer')
          //-1 point from score
         //repeat this format to go through all questions and correct answers in the array
-    } else if (currentQuestion == questions[4] && currentAnswer !== '2. Hello World!') {
+    } else if (currentQuestion == questions[4] && currentAnswer !== event.target.textContent) {
+        points -= 1;
+        localStorage.setItem("score", points)
+        console.log('incorrect answer')
          //-1 point from score
         //repeat this format to go through all questions and correct answers in the array
-    } else {
-        console.log('i think something has gone wrong again')
     }
 
     //rotate to next question and options somehow
@@ -190,6 +245,8 @@ function checkAnswer() {
     //function nextQuestion(){
         //increase place in array by 1
    // }
+   //once the question is answered and the score has been recorded then move to the next array item
+   //cries
     
 }
 
@@ -213,12 +270,4 @@ function quizDisplay() {
 }
 
 quizDisplay();
-
-//options selection
-options.addEventListener('click', function () {
-    if (op1 || op2 || op3) {
-        //clicked
-    }
-})
-//unsure if this is redundant now
 
