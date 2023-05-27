@@ -151,7 +151,7 @@ function checkAnswer() {
     //use shift? will the elements return to the array when the page refreshes?
     //use a forEach method???? cries
     //questions.forEach(nextQuestion)
-    //funciton nextQuestion(){
+    //function nextQuestion(){
         //increase place in array by 1
    // }
     
