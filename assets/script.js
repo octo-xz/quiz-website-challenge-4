@@ -140,6 +140,18 @@ function checkAnswer() {
     if (currentQuestion == questions[0]) && (currentAnswer == '4. HTML') {
         //give +1 pt to score 
         //repeat this format to go through all questions and correct answers in the array
+    } else if (currentQuestion == questions[1]) && (currentAnswer == '4. A type of true false variable') {
+        //give +1 pt to score 
+        //repeat this format to go through all questions and correct answers in the array
+    } else if (currentQuestion == questions[2]) && (currentAnswer == '3. !') {
+        //give +1 pt to score 
+        //repeat this format to go through all questions and correct answers in the array
+    } else if (currentQuestion == questions[3]) && (currentAnswer == '3. Document Object Model') {
+        //give +1 pt to score 
+        //repeat this format to go through all questions and correct answers in the array
+    } else if (currentQuestion == questions[4]) && (currentAnswer == '2. Hello World!') {
+        //give +1 pt to score 
+        //repeat this format to go through all questions and correct answers in the array
     }
 
     if(currentQuestion == questions[0]) && (currentAnswer !== '4. HTML') {
