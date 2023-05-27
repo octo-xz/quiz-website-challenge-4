@@ -1,6 +1,8 @@
 //sorting out my button first
 var gameContainer = document.getElementById('theBigContainer');
 
+var resultsContainer = document.getElementById('resultsContainer');
+
 var startBtn = document.getElementById('gameStartBtn');
 
 var countdown = document.getElementById('countdown');
@@ -19,9 +21,10 @@ var timer = 30;
 
 var interval;
 
+var points = 0;
 
 
-//gotta have a buttons section :D
+//gotta have a buttons section :D and theyre pretty buttons hehehe
 //starts the quiz
 //disappears buttons for questions to take place 
 startBtn.addEventListener('click', function () {
@@ -56,6 +59,11 @@ resultsBtn.addEventListener('click', function(){
     startBtn.style.display = 'none';
     resultsBtn.style.display = 'none';
     backBtn.style.display = 'block';
+    localStorage.getItem("score", points)
+    console.log(points)
+    
+    
+
 })
 
 backBtn.addEventListener('click', function(){
@@ -70,6 +78,8 @@ function renderTimer() {
     countdown.textContent = timer + " seconds left!"
     if (timer == 1) {
         countdown.textContent = timer + " second left!"
+    } else if (timer == 0) {
+        gameContainer.style.display = 'none'
     }
 
 }
@@ -163,37 +173,67 @@ function checkAnswer(event) {
 
     var currentQuestion = questions[index];
 
+    var points = 0
+
     if (currentQuestion == questions[0] && currentAnswer == event.target.textContent) {
+        points += 1;
+        localStorage.setItem("score", points)
         console.log("correct answer")
         //give +1 pt to score 
         //repeat this format to go through all questions and correct answers in the array
     } else if (currentQuestion == questions[1] && currentAnswer == event.target.textContent) {
+        points += 1;
+        localStorage.setItem("score", points)
+        console.log("correct answer")
         //give +1 pt to score 
         //repeat this format to go through all questions and correct answers in the array
     } else if (currentQuestion == questions[2] && currentAnswer == event.target.textContent) {
+        points += 1;
+        localStorage.setItem("score", points)
+        console.log("correct answer")
         //give +1 pt to score 
         //repeat this format to go through all questions and correct answers in the array
     } else if (currentQuestion == questions[3] && currentAnswer == event.target.textContent) {
+        points += 1;
+        localStorage.setItem("score", points)
+        console.log("correct answer")
         //give +1 pt to score 
         //repeat this format to go through all questions and correct answers in the array
     } else if (currentQuestion == questions[4] && currentAnswer == event.target.textContent) {
+        points += 1;
+        localStorage.setItem("score", points)
+        console.log("correct answer")
         //give +1 pt to score 
         //repeat this format to go through all questions and correct answers in the array
     }
 
     if(currentQuestion == questions[0] && currentAnswer !== event.target.textContent) {
+        points -= 1;
+        localStorage.setItem("score", points)
         console.log('incorrect answer')
         //-1 point from score
     } else if (currentQuestion == questions[1] && currentAnswer !== event.target.textContent) {
+        points -= 1;
+        localStorage.setItem("score", points)
+        console.log('incorrect answer')
          //-1 point from score
         //repeat this format to go through all questions and correct answers in the array
     } else if (currentQuestion == questions[2] && currentAnswer !== event.target.textContent) {
+        points -= 1;
+        localStorage.setItem("score", points)
+        console.log('incorrect answer')
          //-1 point from score
         //repeat this format to go through all questions and correct answers in the array
     } else if (currentQuestion == questions[3] && currentAnswer !== event.target.textContent) {
+        points -= 1;
+        localStorage.setItem("score", points)
+        console.log('incorrect answer')
          //-1 point from score
         //repeat this format to go through all questions and correct answers in the array
     } else if (currentQuestion == questions[4] && currentAnswer !== event.target.textContent) {
+        points -= 1;
+        localStorage.setItem("score", points)
+        console.log('incorrect answer')
          //-1 point from score
         //repeat this format to go through all questions and correct answers in the array
     }
@@ -205,6 +245,8 @@ function checkAnswer(event) {
     //function nextQuestion(){
         //increase place in array by 1
    // }
+   //once the question is answered and the score has been recorded then move to the next array item
+   //cries
     
 }
 

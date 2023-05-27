@@ -20,6 +20,7 @@
     transition-duration: 0.4s;
     width: 280px;
     height: 100px;
+    margin: 5px;
 }
 
 #gameStartBtn:hover {
@@ -27,8 +28,53 @@
     color: #45D994;
 }
 
+#resultsBtn{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100px;
+    width: 280px;
+    font-size: 24px;
+    font-family: 'silkscreen', 'monospace', 'serif';
+    margin: 5px;
+    background-color: #45D994;
+    border-radius: 5px;
+    transition: 0.4s;
+}
+
+#resultsBtn:hover {
+    background-color: aquamarine;
+    color: #45D994;
+}
+
+#resultsContainer {
+    display: flex;
+    justify-content: center;
+}
+
 #backBtn {
+    display:flex;
     display: none;
+    flex-direction: column;
+    justify-content: center;
+    margin: 5px;
+    height: 100px;
+    width: 280px;
+    font-family: 'silkscreen', 'monospace', 'serif';
+    font-size: 24px;
+    background-color: #45D994;
+    border-radius: 5px;
+    transition: 0.4s;
+}
+
+#backBtn:hover {
+    background-color: aquamarine;
+    color:#45D994;
+}
+
+#backContainer {
+    display: flex;
+    justify-content: center;
 }
 
 #scores {
