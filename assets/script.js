@@ -3,6 +3,8 @@ var gameContainer = document.getElementById('theBigContainer');
 
 var resultsContainer = document.getElementById('resultsContainer');
 
+var enterName = document.getElementById('enterName')
+
 var startBtn = document.getElementById('gameStartBtn');
 
 var countdown = document.getElementById('countdown');
@@ -54,16 +56,14 @@ startBtn.addEventListener('click', function () {
 
 });
 
+
+
 resultsBtn.addEventListener('click', function(){
     quizStart == false;
     startBtn.style.display = 'none';
     resultsBtn.style.display = 'none';
     backBtn.style.display = 'block';
-    localStorage.getItem("score", points)
-    console.log(points)
-    
-    
-
+    localStorage.getItem(points)
 })
 
 backBtn.addEventListener('click', function(){
