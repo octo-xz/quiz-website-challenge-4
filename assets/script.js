@@ -19,6 +19,7 @@ var interval;
 
 
 //starts the quiz
+//disappears buttons for questions to take place 
 startBtn.addEventListener('click', function () {
     gameContainer.style.display = "block";
     startBtn.style.display = 'none';
@@ -46,8 +47,6 @@ startBtn.addEventListener('click', function () {
 });
 
 
-
-
 function renderTimer() {
     countdown.textContent = timer + " seconds left!"
     if (timer == 1) {
@@ -55,7 +54,6 @@ function renderTimer() {
     }
 
 }
-
 
 
 
@@ -137,15 +135,70 @@ function checkAnswer() {
     //move up one in the array to display next question
     //index+1 increase index in array by one every time question is asked
     //help im cry
+    //define variable currentAnswer as global?
 
+    var selectedAnswer = questions.options.addEventListener('click') //whatever choice is clicked on
+    //clicked option questions.options.addEventListener('click')
+
+    var currentAnswer = questions[index].correct
+
+    var currentQuestion = questions[index];
+
+    if (currentQuestion == questions[0] && selectedAnswer == currentAnswer) {
+        console.log("correct answer")
+        //give +1 pt to score 
+        //repeat this format to go through all questions and correct answers in the array
+    } else if (currentQuestion == questions[1] && currentAnswer == '4. A type of true false variable') {
+        //give +1 pt to score 
+        //repeat this format to go through all questions and correct answers in the array
+    } else if (currentQuestion == questions[2] && currentAnswer == '3. !') {
+        //give +1 pt to score 
+        //repeat this format to go through all questions and correct answers in the array
+    } else if (currentQuestion == questions[3] && currentAnswer == '3. Document Object Model') {
+        //give +1 pt to score 
+        //repeat this format to go through all questions and correct answers in the array
+    } else if (currentQuestion == questions[4] && currentAnswer == '2. Hello World!') {
+        //give +1 pt to score 
+        //repeat this format to go through all questions and correct answers in the array
+    } else {
+        console.log('i think something has gone wrong')
+    }
+
+    if(currentQuestion == questions[0] && currentAnswer !== '4. HTML') {
+        console.log('incorrect answer')
+        //-1 point from score
+    } else if (currentQuestion == questions[1] && currentAnswer !== '4. A type of true false variable') {
+         //-1 point from score
+        //repeat this format to go through all questions and correct answers in the array
+    } else if (currentQuestion == questions[2] && currentAnswer !== '3. !') {
+         //-1 point from score
+        //repeat this format to go through all questions and correct answers in the array
+    } else if (currentQuestion == questions[3] && currentAnswer !== '3. Document Object Model') {
+         //-1 point from score
+        //repeat this format to go through all questions and correct answers in the array
+    } else if (currentQuestion == questions[4] && currentAnswer !== '2. Hello World!') {
+         //-1 point from score
+        //repeat this format to go through all questions and correct answers in the array
+    } else {
+        console.log('i think something has gone wrong again')
+    }
+
+    //rotate to next question and options somehow
+    //use shift? will the elements return to the array when the page refreshes?
+    //use a forEach method???? cries
+    //questions.forEach(nextQuestion)
+    //function nextQuestion(){
+        //increase place in array by 1
+   // }
+    
 }
 
 
 
 //the functionality of the quiz will go in this function
-function quiz() {
+function quizDisplay() {
     //first i want to set what questions the quiz will cycle through
-    var currentQuestion = questions[index]
+    var currentQuestion = questions[index] //making this a global variable?
     //question 1
     quest1.textContent = currentQuestion.question
     //first choice
@@ -159,7 +212,7 @@ function quiz() {
 
 }
 
-quiz();
+quizDisplay();
 
 //options selection
 options.addEventListener('click', function () {
