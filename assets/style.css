@@ -101,6 +101,11 @@ body {
     background-color: #3ED5E6;
     font-family: 'Silkscreen', 'monospace', 'cursive';
 }
+
+#timerOut {
+    display: none;
+}
+
 #theBigContainer {
     display: none;
 }

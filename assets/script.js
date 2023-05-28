@@ -8,7 +8,7 @@ var quizQuestion = document.getElementById('quiz-question');
 
 var resultsContainer = document.getElementById('resultsContainer');
 
-var enterName = document.getElementById('enterName')
+var outOfTime = document.getElementById('timerOut')
 
 var startBtn = document.getElementById('gameStartBtn');
 
@@ -34,7 +34,7 @@ var quizStart = false;
 
 var index = 0;
 
-var timer = 30;
+var timer = 5;
 
 var interval;
 
@@ -103,7 +103,7 @@ startBtn.addEventListener('click', function () {
     resultsBtn.style.display = 'none';
     backBtn.style.display = 'none';
     quizStart = true;
-    timer = 30;
+    timer = 3;
 
     quizDisplay()
 
@@ -117,9 +117,8 @@ startBtn.addEventListener('click', function () {
         renderTimer();
         if (timer <= 0) {
             clearInterval(interval);
-
-            
             resultsBtn.style.display = 'block'
+            
         }
     }, 1000);
 
@@ -130,13 +129,15 @@ resultsBtn.addEventListener('click', function(){
     startBtn.style.display = 'none';
     resultsBtn.style.display = 'none';
     backBtn.style.display = 'block';
-    localStorage.getItem(points)
+    localStorage.getItem(points);
+    outOfTime.style.display = 'none';
 })
 
 backBtn.addEventListener('click', function(){
     startBtn.style.display = 'block';
     resultsBtn.style.display = 'block';
     backBtn.style.display = 'none';
+    outOfTime.style.display = 'none';
 })
 
 function renderTimer() {
@@ -144,15 +145,18 @@ function renderTimer() {
     if (timer == 1) {
         countdown.textContent = timer + " second left!"
     } else if (timer == 0) {
-        
-        quizContainer.textContent = 'you ran out of time!'
+       outOfTime.style.display = 'block'
+        quizContainer.style.display = 'none'
+        header.style.display = 'none'
     }
 
 }
 
 function quizDisplay() {
     //first i want to set what questions the quiz will cycle through
-
+    outOfTime.style.display = 'none'
+    header.style.display = 'block'
+    quizContainer.style.display = 'block'
     if(index >= questions.length) {
         //stop timer check
         //clear the page
@@ -164,6 +168,7 @@ function quizDisplay() {
         resultsBtn.style.display = 'block'
 
     } else {
+
         var currentQuestion = questions[index]
         quest1.textContent = currentQuestion.question
     //first choice
@@ -288,9 +293,6 @@ function clearQuestion() {
    //once the question is answered and the score has been recorded then move to the next array item
    //cries
     
-
-
-//the functionality of the quiz will go in this function
 
 quizDisplay();
 
