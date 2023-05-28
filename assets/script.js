@@ -1,4 +1,3 @@
-//sorting out my button first
 var gameContainer = document.getElementById('theBigContainer');
 
 var header = document.getElementById('header');
@@ -18,6 +17,12 @@ var countdown = document.getElementById('countdown');
 var resultsBtn = document.getElementById('resultsBtn');
 
 var backBtn = document.getElementById('backBtn');
+
+var quest1 = document.getElementById('quiz-question')
+var quest2 = document.getElementById('quiz-question')
+var quest3 = document.getElementById('quiz-question')
+var quest4 = document.getElementById('quiz-question')
+var quest5 = document.getElementById('quiz-question')
 
 var options = document.getElementById('options');
 var op1 = document.getElementById('op1')
@@ -89,12 +94,6 @@ var questions =
     }
     ]
 
-    var quest1 = document.getElementById('quiz-question')
-    var quest2 = document.getElementById('quiz-question')
-    var quest3 = document.getElementById('quiz-question')
-    var quest4 = document.getElementById('quiz-question')
-    var quest5 = document.getElementById('quiz-question')
-    
 //gotta have a buttons section :D and theyre pretty buttons hehehe
 //starts the quiz
 //disappears buttons for questions to take place 
@@ -155,9 +154,10 @@ function quizDisplay() {
     //first i want to set what questions the quiz will cycle through
 
     if(index >= questions.length) {
-        //stop timer
+        //stop timer check
         //clear the page
-        //view scores button
+        //view scores button check
+        //prompt user to enter initials to add their score
         clearInterval(interval);
         quizContainer.style.display = 'none'
         //quiz not displaying again after pressing start the game possibly has to do with index not be reset?
