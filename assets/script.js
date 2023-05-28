@@ -103,7 +103,7 @@ startBtn.addEventListener('click', function () {
     resultsBtn.style.display = 'none';
     backBtn.style.display = 'none';
     quizStart = true;
-    timer = 3;
+    timer = 15;
 
     quizDisplay()
 
@@ -138,6 +138,7 @@ backBtn.addEventListener('click', function(){
     resultsBtn.style.display = 'block';
     backBtn.style.display = 'none';
     outOfTime.style.display = 'none';
+    header.style.display = 'none'
 })
 
 function renderTimer() {
@@ -166,7 +167,7 @@ function quizDisplay() {
         quizContainer.style.display = 'none'
         //quiz not displaying again after pressing start the game possibly has to do with index not be reset?
         resultsBtn.style.display = 'block'
-
+        getScore();
     } else {
 
         var currentQuestion = questions[index]
@@ -189,11 +190,13 @@ function checkAnswer(event) {
         index++;
         clearQuestion();
         quizDisplay();
+        localStorage.setItem('score', points)
     } else {
         points--;
         index++;
         clearQuestion();
         quizDisplay();
+        localStorage.setItem('score', points)
     }
 }
 
@@ -203,6 +206,14 @@ function clearQuestion() {
     op2.textContent = '';
     op3.textContent = '';
     op4.textContent = '';
+}
+
+function getScore(){
+    var initials = prompt('Enter your initials to get your score!')
+    localStorage.setItem('initials', initials)
+    //something to do with local storage
+    //input to enter initials
+    //save and store the score!!!
 }
     //if selected correct answer +1
     //else if selected wrong answer -1
