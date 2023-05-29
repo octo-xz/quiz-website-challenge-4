@@ -52,7 +52,13 @@
     justify-content: center;
 }
 
+#enterInit {
+    display: none;
+}
 
+#initId {
+    display: none;
+}
 
 #backBtn {
     display:flex;

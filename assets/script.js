@@ -94,6 +94,10 @@ var questions =
     }
     ]
 
+var highScoresArray = JSON.parse(localStorage.getItem('highScores')) || []
+
+
+
 //gotta have a buttons section :D and theyre pretty buttons hehehe
 //starts the quiz
 //disappears buttons for questions to take place 
@@ -104,7 +108,7 @@ startBtn.addEventListener('click', function () {
     backBtn.style.display = 'none';
     quizStart = true;
     timer = 15;
-
+    index = 0;
     quizDisplay()
 
     renderTimer();
@@ -118,13 +122,13 @@ startBtn.addEventListener('click', function () {
         if (timer <= 0) {
             clearInterval(interval);
             resultsBtn.style.display = 'block'
-            
+
         }
     }, 1000);
 
 });
 
-resultsBtn.addEventListener('click', function(){
+resultsBtn.addEventListener('click', function () {
     quizStart == false;
     startBtn.style.display = 'none';
     resultsBtn.style.display = 'none';
@@ -133,7 +137,7 @@ resultsBtn.addEventListener('click', function(){
     outOfTime.style.display = 'none';
 })
 
-backBtn.addEventListener('click', function(){
+backBtn.addEventListener('click', function () {
     startBtn.style.display = 'block';
     resultsBtn.style.display = 'block';
     backBtn.style.display = 'none';
@@ -146,7 +150,7 @@ function renderTimer() {
     if (timer == 1) {
         countdown.textContent = timer + " second left!"
     } else if (timer == 0) {
-       outOfTime.style.display = 'block'
+        outOfTime.style.display = 'block'
         quizContainer.style.display = 'none'
         header.style.display = 'none'
     }
@@ -158,7 +162,7 @@ function quizDisplay() {
     outOfTime.style.display = 'none'
     header.style.display = 'block'
     quizContainer.style.display = 'block'
-    if(index >= questions.length) {
+    if (index >= questions.length) {
         //stop timer check
         //clear the page
         //view scores button check
@@ -172,20 +176,20 @@ function quizDisplay() {
 
         var currentQuestion = questions[index]
         quest1.textContent = currentQuestion.question
-    //first choice
+        //first choice
         op1.textContent = currentQuestion.options.one
-    //second choice
+        //second choice
         op2.textContent = currentQuestion.options.two
-    //third choice
+        //third choice
         op3.textContent = currentQuestion.options.three
-    //fourth choice
+        //fourth choice
         op4.textContent = currentQuestion.options.four
     }
 }
 
 function checkAnswer(event) {
     var buttonClick = event.target
-    if(questions[index].correct === buttonClick.textContent){
+    if (questions[index].correct === buttonClick.textContent) {
         points++;
         index++;
         clearQuestion();
@@ -208,102 +212,54 @@ function clearQuestion() {
     op4.textContent = '';
 }
 
-function getScore(){
-    var initials = prompt('Enter your initials to get your score!')
-    localStorage.setItem('initials', initials)
+function getScore() {
+
+    var enterInitials = document.getElementById('enterInit').value
+
+
+    var objectScore = {
+        initials: enterInitials,
+        score: points
+    }
+
+    highScoresArray.push(objectScore);
+
+
+
+    localStorage.setItem('highScores', JSON.stringify(highScoresArray))
+
+    localStorage.getItem('initials')
     //something to do with local storage
     //input to enter initials
     //save and store the score!!!
+    // var scoreKeeper =
+    //     [{
+    //         initials: 'JS',
+    //         score: 5
+    //     },
+    //     {
+    //         initials: 'MW',
+    //         score: -2
+    //     }
+    //     ]
 }
-    //if selected correct answer +1
-    //else if selected wrong answer -1
-    //move up one in the array to display next question
-    //index+1 increase index in array by one every time question is asked
-    //help im cry
-    //define variable currentAnswer as global?
+//if selected correct answer +1
+//else if selected wrong answer -1
+//move up one in the array to display next question
+//index+1 increase index in array by one every time question is asked
+//help im cry
+//define variable currentAnswer as global?
 
-     //whatever choice is clicked on
-    //clicked option questions.options.addEventListener('click')
+//whatever choice is clicked on
+//clicked option questions.options.addEventListener('click')
 
-    // var currentAnswer = questions[index].correct
+// var currentAnswer = questions[index].correct
 
-    // var currentQuestion = questions[index];
+// var currentQuestion = questions[index];
 
-    // var points = 0
+// var points = 0
+//cries
 
-    // if (currentQuestion == questions[0] && currentAnswer == event.target.textContent) {
-    //     points += 1;
-    //     localStorage.setItem("score", points)
-    //     console.log("correct answer")
-    //     //give +1 pt to score 
-    //     //repeat this format to go through all questions and correct answers in the array
-    // } else if (currentQuestion == questions[1] && currentAnswer == event.target.textContent) {
-    //     points += 1;
-    //     localStorage.setItem("score", points)
-    //     console.log("correct answer")
-    //     //give +1 pt to score 
-    //     //repeat this format to go through all questions and correct answers in the array
-    // } else if (currentQuestion == questions[2] && currentAnswer == event.target.textContent) {
-    //     points += 1;
-    //     localStorage.setItem("score", points)
-    //     console.log("correct answer")
-    //     //give +1 pt to score 
-    //     //repeat this format to go through all questions and correct answers in the array
-    // } else if (currentQuestion == questions[3] && currentAnswer == event.target.textContent) {
-    //     points += 1;
-    //     localStorage.setItem("score", points)
-    //     console.log("correct answer")
-    //     //give +1 pt to score 
-    //     //repeat this format to go through all questions and correct answers in the array
-    // } else if (currentQuestion == questions[4] && currentAnswer == event.target.textContent) {
-    //     points += 1;
-    //     localStorage.setItem("score", points)
-    //     console.log("correct answer")
-    //     //give +1 pt to score 
-    //     //repeat this format to go through all questions and correct answers in the array
-    // }
-
-    // if(currentQuestion == questions[0] && currentAnswer !== event.target.textContent) {
-    //     points -= 1;
-    //     localStorage.setItem("score", points)
-    //     console.log('incorrect answer')
-    //     //-1 point from score
-    // } else if (currentQuestion == questions[1] && currentAnswer !== event.target.textContent) {
-    //     points -= 1;
-    //     localStorage.setItem("score", points)
-    //     console.log('incorrect answer')
-    //      //-1 point from score
-    //     //repeat this format to go through all questions and correct answers in the array
-    // } else if (currentQuestion == questions[2] && currentAnswer !== event.target.textContent) {
-    //     points -= 1;
-    //     localStorage.setItem("score", points)
-    //     console.log('incorrect answer')
-    //      //-1 point from score
-    //     //repeat this format to go through all questions and correct answers in the array
-    // } else if (currentQuestion == questions[3] && currentAnswer !== event.target.textContent) {
-    //     points -= 1;
-    //     localStorage.setItem("score", points)
-    //     console.log('incorrect answer')
-    //      //-1 point from score
-    //     //repeat this format to go through all questions and correct answers in the array
-    // } else if (currentQuestion == questions[4] && currentAnswer !== event.target.textContent) {
-    //     points -= 1;
-    //     localStorage.setItem("score", points)
-    //     console.log('incorrect answer')
-         //-1 point from score
-        //repeat this format to go through all questions and correct answers in the array
-   //}
-
-    //rotate to next question and options somehow
-    //use shift? will the elements return to the array when the page refreshes?
-    //use a forEach method???? cries
-    //questions.forEach(nextQuestion)
-    //function nextQuestion(){
-        //increase place in array by 1
-   // }
-   //once the question is answered and the score has been recorded then move to the next array item
-   //cries
-    
 
 quizDisplay();
 
