@@ -18,6 +18,8 @@ var resultsBtn = document.getElementById('resultsBtn');
 
 var backBtn = document.getElementById('backBtn');
 
+var submitBtn  = document.getElementById('submitBtn')
+
 var quest1 = document.getElementById('quiz-question')
 var quest2 = document.getElementById('quiz-question')
 var quest3 = document.getElementById('quiz-question')
@@ -101,6 +103,11 @@ var highScoresArray = JSON.parse(localStorage.getItem('highScores')) || []
 //gotta have a buttons section :D and theyre pretty buttons hehehe
 //starts the quiz
 //disappears buttons for questions to take place 
+
+function showBtn() {
+    resultsBtn.style.display = 'block'
+}
+
 startBtn.addEventListener('click', function () {
     gameContainer.style.display = "block";
     startBtn.style.display = 'none';
@@ -133,8 +140,21 @@ resultsBtn.addEventListener('click', function () {
     startBtn.style.display = 'none';
     resultsBtn.style.display = 'none';
     backBtn.style.display = 'block';
-    localStorage.getItem(points);
+    // localStorage.getItem(points);
     outOfTime.style.display = 'none';
+    document.getElementById('scoreDisplay').innerHTML = ''
+    var happyDays = document.createElement('h3')
+    happyDays.textContent = 'Scores!'
+    document.getElementById('scoreDisplay').appendChild(happyDays);
+    
+
+    for( var i = 0; i<highScoresArray.length; i++){
+        var currScore = document.createElement('p')
+        currScore.textContent = highScoresArray[i].initials + ': ' + highScoresArray[i].score
+        document.getElementById('scoreDisplay').appendChild(currScore);
+    }
+    document.getElementById('scoreDisplay').style.display = 'block'
+
 })
 
 backBtn.addEventListener('click', function () {
@@ -143,16 +163,18 @@ backBtn.addEventListener('click', function () {
     backBtn.style.display = 'none';
     outOfTime.style.display = 'none';
     header.style.display = 'none'
+    document.getElementById('scoreDisplay').style.display = 'none'
 })
 
 function renderTimer() {
     countdown.textContent = timer + " seconds left!"
     if (timer == 1) {
         countdown.textContent = timer + " second left!"
-    } else if (timer == 0) {
+    } else if (timer <= 0) {
         outOfTime.style.display = 'block'
         quizContainer.style.display = 'none'
         header.style.display = 'none'
+        resultsBtn.style.display = 'block'
     }
 
 }
@@ -170,8 +192,8 @@ function quizDisplay() {
         clearInterval(interval);
         quizContainer.style.display = 'none'
         //quiz not displaying again after pressing start the game possibly has to do with index not be reset?
-        resultsBtn.style.display = 'block'
-        getScore();
+        resultsContainer.style.display = 'block'
+        // getScore();
     } else {
 
         var currentQuestion = questions[index]
@@ -198,6 +220,7 @@ function checkAnswer(event) {
     } else {
         points--;
         index++;
+        timer -= 5;
         clearQuestion();
         quizDisplay();
         localStorage.setItem('score', points)
@@ -213,7 +236,10 @@ function clearQuestion() {
 }
 
 function getScore() {
-
+    resultsContainer.style.display = 'block'
+    // document.getElementById('initId').style.display = 'block'
+    // document.getElementById('enterInit').style.display = 'block'
+    // .style.display = 'block'
     var enterInitials = document.getElementById('enterInit').value
 
 
@@ -228,7 +254,8 @@ function getScore() {
 
     localStorage.setItem('highScores', JSON.stringify(highScoresArray))
 
-    localStorage.getItem('initials')
+    // allow me to enter initials before saving score
+    //display them on the page once entered
     //something to do with local storage
     //input to enter initials
     //save and store the score!!!
@@ -262,6 +289,18 @@ function getScore() {
 
 
 quizDisplay();
+showBtn();
+
+
+submitBtn.addEventListener('click', function(){
+    resultsBtn.style.display = 'block'
+    document.getElementById('enterInit').style.display = 'none'
+    document.getElementById('initId').style.display = 'none'
+    submitBtn.style.display = 'none'
+
+    getScore();
+
+})
 
 op1.addEventListener('click', checkAnswer)
 op2.addEventListener('click', checkAnswer)

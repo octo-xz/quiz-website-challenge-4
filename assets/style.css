@@ -32,11 +32,12 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     height: 100px;
     width: 280px;
     font-size: 24px;
     font-family: 'silkscreen', 'monospace', 'serif';
-    margin: 5px;
+    margin: 5px auto;
     background-color: #45D994;
     border-radius: 5px;
     transition: 0.4s;
@@ -47,18 +48,23 @@
     color: #45D994;
 }
 
+/* #submitBtn {
+    display: none;
+} */
+
 #resultsContainer {
     display: flex;
     justify-content: center;
-}
-
-#enterInit {
     display: none;
 }
 
-#initId {
+/* #enterInit {
     display: none;
-}
+} */
+
+/* #initId {
+    display: none;
+} */
 
 #backBtn {
     display:flex;
@@ -167,3 +173,17 @@ body {
     position: relative;
     bottom: 47px;
 }
+
+#scoreDisplay {
+    background-color: #ac62e8;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    
+}
+
+/* #uwu {
+    border-radius: 5px;
+    display: none;
+} */
