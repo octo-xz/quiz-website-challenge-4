@@ -14,4 +14,4 @@ This quiz tests very basic coding knowledge so its best use-case if having someo
 ### Features
 Using a combination of JavaScript, CSS and HTML and a lot of convoluted code, this web application features a quiz with five wuestions each with four options, a timer that when runs out stops the quiz does not allow you to input a score. When the quiz is completed successfully the user will be prompted to enter their initials and submit their score which they can then view by clicking on the 'View Scores' button. 
 ### Project Status
-This project is currently complete and can be found here:
+This project is currently complete and can be found here: https://octo-xz.github.io/quiz-website-challenge-4/
