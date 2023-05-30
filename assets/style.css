@@ -98,6 +98,7 @@
     transition: 0.4s;
     font-size: 24px;
     font-family: 'silkscreen', 'monospace', 'serif';
+    margin: 5px auto;
 }
 
 #backContainer {
@@ -170,15 +171,23 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: 5px auto;
     display: none;
+
 }
 
-#initId #enterInit {
+
+
+#initId,
+#enterInit {
+    display: flex;
     justify-content: center;
+    flex-direction: column;
     background-color: #ac62e8;
     border: solid 5px rgb(172, 48, 197);
     border-radius: 5px;
-    display: none;
+    margin: 5px auto;
+    width: 40%;
 }
 
 #quiz-question {

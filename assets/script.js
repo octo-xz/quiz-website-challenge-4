@@ -236,10 +236,9 @@ function clearQuestion() {
 }
 
 function getScore() {
-    resultsContainer.style.display = 'flex'
-    resultsContainer.style.justifyContent = 'center'
-    // document.getElementById('initId').style.display = 'block'
-    // document.getElementById('enterInit').style.display = 'block'
+    resultsContainer.style.display = 'block'
+    //document.getElementById('initId').style.display = 'block'
+    //document.getElementById('enterInit').style.display = 'block'
     // .style.display = 'block'
     var enterInitials = document.getElementById('enterInit').value
 
