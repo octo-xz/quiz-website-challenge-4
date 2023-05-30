@@ -8,7 +8,7 @@ var quizQuestion = document.getElementById('quiz-question');
 
 var resultsContainer = document.getElementById('resultsContainer');
 
-var enterName = document.getElementById('enterName')
+var outOfTime = document.getElementById('timerOut')
 
 var startBtn = document.getElementById('gameStartBtn');
 
@@ -17,6 +17,8 @@ var countdown = document.getElementById('countdown');
 var resultsBtn = document.getElementById('resultsBtn');
 
 var backBtn = document.getElementById('backBtn');
+
+var submitBtn  = document.getElementById('submitBtn')
 
 var quest1 = document.getElementById('quiz-question')
 var quest2 = document.getElementById('quiz-question')
@@ -94,9 +96,18 @@ var questions =
     }
     ]
 
+var highScoresArray = JSON.parse(localStorage.getItem('highScores')) || []
+
+
+
 //gotta have a buttons section :D and theyre pretty buttons hehehe
 //starts the quiz
 //disappears buttons for questions to take place 
+
+function showBtn() {
+    resultsBtn.style.display = 'block'
+}
+
 startBtn.addEventListener('click', function () {
     gameContainer.style.display = "block";
     startBtn.style.display = 'none';
@@ -104,7 +115,7 @@ startBtn.addEventListener('click', function () {
     backBtn.style.display = 'none';
     quizStart = true;
     timer = 30;
-
+    index = 0;
     quizDisplay()
 
     renderTimer();
@@ -117,43 +128,63 @@ startBtn.addEventListener('click', function () {
         renderTimer();
         if (timer <= 0) {
             clearInterval(interval);
-
-            
             resultsBtn.style.display = 'block'
+
         }
     }, 1000);
 
 });
 
-resultsBtn.addEventListener('click', function(){
+resultsBtn.addEventListener('click', function () {
     quizStart == false;
     startBtn.style.display = 'none';
     resultsBtn.style.display = 'none';
     backBtn.style.display = 'block';
-    localStorage.getItem(points)
+    // localStorage.getItem(points);
+    outOfTime.style.display = 'none';
+    document.getElementById('scoreDisplay').innerHTML = ''
+    var happyDays = document.createElement('h3')
+    happyDays.textContent = 'Scores!'
+    document.getElementById('scoreDisplay').appendChild(happyDays);
+    
+
+    for( var i = 0; i<highScoresArray.length; i++){
+        var currScore = document.createElement('p')
+        currScore.textContent = highScoresArray[i].initials + ': ' + highScoresArray[i].score
+        document.getElementById('scoreDisplay').appendChild(currScore);
+    }
+    document.getElementById('scoreDisplay').style.display = 'block'
+
 })
 
-backBtn.addEventListener('click', function(){
+backBtn.addEventListener('click', function () {
     startBtn.style.display = 'block';
     resultsBtn.style.display = 'block';
     backBtn.style.display = 'none';
+    outOfTime.style.display = 'none';
+    header.style.display = 'none'
+    document.getElementById('scoreDisplay').style.display = 'none'
 })
 
 function renderTimer() {
     countdown.textContent = timer + " seconds left!"
     if (timer == 1) {
         countdown.textContent = timer + " second left!"
-    } else if (timer == 0) {
-        
-        quizContainer.textContent = 'you ran out of time!'
+    } else if (timer <= 0) {
+        outOfTime.style.display = 'block'
+        quizContainer.style.display = 'none'
+        header.style.display = 'none'
+        resultsBtn.style.display = 'block'
     }
 
 }
 
 function quizDisplay() {
     //first i want to set what questions the quiz will cycle through
-
-    if(index >= questions.length) {
+    outOfTime.style.display = 'none'
+    header.style.display = 'block'
+    quizContainer.style.display = 'block'
+    if (index >= questions.length) {
         //stop timer check
         //clear the page
         //view scores button check
@@ -161,34 +192,38 @@ function quizDisplay() {
         clearInterval(interval);
         quizContainer.style.display = 'none'
         //quiz not displaying again after pressing start the game possibly has to do with index not be reset?
-        resultsBtn.style.display = 'block'
-
+        resultsContainer.style.display = 'block'
+        // getScore();
     } else {
+
         var currentQuestion = questions[index]
         quest1.textContent = currentQuestion.question
-    //first choice
+        //first choice
         op1.textContent = currentQuestion.options.one
-    //second choice
+        //second choice
         op2.textContent = currentQuestion.options.two
-    //third choice
+        //third choice
         op3.textContent = currentQuestion.options.three
-    //fourth choice
+        //fourth choice
         op4.textContent = currentQuestion.options.four
     }
 }
 
 function checkAnswer(event) {
     var buttonClick = event.target
-    if(questions[index].correct === buttonClick.textContent){
+    if (questions[index].correct === buttonClick.textContent) {
         points++;
         index++;
         clearQuestion();
         quizDisplay();
+        localStorage.setItem('score', points)
     } else {
         points--;
         index++;
+        timer -= 5;
         clearQuestion();
         quizDisplay();
+        localStorage.setItem('score', points)
     }
 }
 
@@ -199,100 +234,73 @@ function clearQuestion() {
     op3.textContent = '';
     op4.textContent = '';
 }
-    //if selected correct answer +1
-    //else if selected wrong answer -1
-    //move up one in the array to display next question
-    //index+1 increase index in array by one every time question is asked
-    //help im cry
-    //define variable currentAnswer as global?
 
-     //whatever choice is clicked on
-    //clicked option questions.options.addEventListener('click')
-
-    // var currentAnswer = questions[index].correct
-
-    // var currentQuestion = questions[index];
-
-    // var points = 0
-
-    // if (currentQuestion == questions[0] && currentAnswer == event.target.textContent) {
-    //     points += 1;
-    //     localStorage.setItem("score", points)
-    //     console.log("correct answer")
-    //     //give +1 pt to score 
-    //     //repeat this format to go through all questions and correct answers in the array
-    // } else if (currentQuestion == questions[1] && currentAnswer == event.target.textContent) {
-    //     points += 1;
-    //     localStorage.setItem("score", points)
-    //     console.log("correct answer")
-    //     //give +1 pt to score 
-    //     //repeat this format to go through all questions and correct answers in the array
-    // } else if (currentQuestion == questions[2] && currentAnswer == event.target.textContent) {
-    //     points += 1;
-    //     localStorage.setItem("score", points)
-    //     console.log("correct answer")
-    //     //give +1 pt to score 
-    //     //repeat this format to go through all questions and correct answers in the array
-    // } else if (currentQuestion == questions[3] && currentAnswer == event.target.textContent) {
-    //     points += 1;
-    //     localStorage.setItem("score", points)
-    //     console.log("correct answer")
-    //     //give +1 pt to score 
-    //     //repeat this format to go through all questions and correct answers in the array
-    // } else if (currentQuestion == questions[4] && currentAnswer == event.target.textContent) {
-    //     points += 1;
-    //     localStorage.setItem("score", points)
-    //     console.log("correct answer")
-    //     //give +1 pt to score 
-    //     //repeat this format to go through all questions and correct answers in the array
-    // }
-
-    // if(currentQuestion == questions[0] && currentAnswer !== event.target.textContent) {
-    //     points -= 1;
-    //     localStorage.setItem("score", points)
-    //     console.log('incorrect answer')
-    //     //-1 point from score
-    // } else if (currentQuestion == questions[1] && currentAnswer !== event.target.textContent) {
-    //     points -= 1;
-    //     localStorage.setItem("score", points)
-    //     console.log('incorrect answer')
-    //      //-1 point from score
-    //     //repeat this format to go through all questions and correct answers in the array
-    // } else if (currentQuestion == questions[2] && currentAnswer !== event.target.textContent) {
-    //     points -= 1;
-    //     localStorage.setItem("score", points)
-    //     console.log('incorrect answer')
-    //      //-1 point from score
-    //     //repeat this format to go through all questions and correct answers in the array
-    // } else if (currentQuestion == questions[3] && currentAnswer !== event.target.textContent) {
-    //     points -= 1;
-    //     localStorage.setItem("score", points)
-    //     console.log('incorrect answer')
-    //      //-1 point from score
-    //     //repeat this format to go through all questions and correct answers in the array
-    // } else if (currentQuestion == questions[4] && currentAnswer !== event.target.textContent) {
-    //     points -= 1;
-    //     localStorage.setItem("score", points)
-    //     console.log('incorrect answer')
-         //-1 point from score
-        //repeat this format to go through all questions and correct answers in the array
-   //}
-
-    //rotate to next question and options somehow
-    //use shift? will the elements return to the array when the page refreshes?
-    //use a forEach method???? cries
-    //questions.forEach(nextQuestion)
-    //function nextQuestion(){
-        //increase place in array by 1
-   // }
-   //once the question is answered and the score has been recorded then move to the next array item
-   //cries
-    
+function getScore() {
+    resultsContainer.style.display = 'block'
+    //document.getElementById('initId').style.display = 'block'
+    //document.getElementById('enterInit').style.display = 'block'
+    // .style.display = 'block'
+    var enterInitials = document.getElementById('enterInit').value
 
 
-//the functionality of the quiz will go in this function
+    var objectScore = {
+        initials: enterInitials,
+        score: points
+    }
+
+    highScoresArray.push(objectScore);
+
+
+
+    localStorage.setItem('highScores', JSON.stringify(highScoresArray))
+
+    // allow me to enter initials before saving score
+    //display them on the page once entered
+    //something to do with local storage
+    //input to enter initials
+    //save and store the score!!!
+    // var scoreKeeper =
+    //     [{
+    //         initials: 'JS',
+    //         score: 5
+    //     },
+    //     {
+    //         initials: 'MW',
+    //         score: -2
+    //     }
+    //     ]
+}
+//if selected correct answer +1
+//else if selected wrong answer -1
+//move up one in the array to display next question
+//index+1 increase index in array by one every time question is asked
+//help im cry
+//define variable currentAnswer as global?
+
+//whatever choice is clicked on
+//clicked option questions.options.addEventListener('click')
+
+// var currentAnswer = questions[index].correct
+
+// var currentQuestion = questions[index];
+
+// var points = 0
+//cries
+
 
 quizDisplay();
+showBtn();
+
+
+submitBtn.addEventListener('click', function(){
+    resultsBtn.style.display = 'block'
+    document.getElementById('enterInit').style.display = 'none'
+    document.getElementById('initId').style.display = 'none'
+    submitBtn.style.display = 'none'
+
+    getScore();
+
+})
 
 op1.addEventListener('click', checkAnswer)
 op2.addEventListener('click', checkAnswer)

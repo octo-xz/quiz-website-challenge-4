@@ -20,13 +20,18 @@
         <h1>Quiz Game Time!!!</h1>
         <h3 id="countdown"></h3>
       </header>
+      <div id="timerOut" style="text-align: center;">
+        <p>You ran out of time! Tough! Reload to try again loser!</p>
+      </div>
       <div id="container-container">
         <div id="quiz-container">
 
           <div id="question-container">
             <p id="quiz-question"></p>
           </div>
-  
+          
+          
+
           <div id="options">
             <input type="radio" id="option1" name="options" />
             <label id="op1" for="option1"></label>
@@ -41,8 +46,14 @@
         </div>
       </div>
     </div>
+    <div id="scoreDisplay">
+    </div>
+    <button id="resultsBtn">View Scores</button>
     <div id="resultsContainer">
-      <button id="resultsBtn">View Scores</button>
+      <label id="initId" for="enterInit">Enter your initials here:</label>
+      <input type="txt" id="enterInit">
+      <button id="submitBtn">Submit</button>
+      
     </div>
     <div id="backContainer">
       <button id="backBtn">Back</button>
