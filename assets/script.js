@@ -36,7 +36,7 @@ var quizStart = false;
 
 var index = 0;
 
-var timer = 5;
+var timer = 30;
 
 var interval;
 
@@ -114,7 +114,7 @@ startBtn.addEventListener('click', function () {
     resultsBtn.style.display = 'none';
     backBtn.style.display = 'none';
     quizStart = true;
-    timer = 15;
+    timer = 30;
     index = 0;
     quizDisplay()
 
